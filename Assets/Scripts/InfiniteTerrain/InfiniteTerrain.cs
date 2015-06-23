@@ -75,7 +75,6 @@ public class InfiniteTerrain : InfiniteLandscape
 
         for (int i = 0; i < numOfSplatPrototypes; i++)
         {
-            //m_splatPrototypes[i] = new SplatPrototype();
             m_splatPrototypes[i].texture = splat[i];
             m_splatPrototypes[i].tileOffset = Vector2.zero;
             m_splatPrototypes[i].tileSize = splatTileSize[i];
@@ -85,14 +84,12 @@ public class InfiniteTerrain : InfiniteLandscape
         for (int i = 0; i < numOfDetailPrototypes; i++)
         {
             m_detailProtoTypes[i] = new DetailPrototype();
-            //protoDetail[i].prototype = detailMesh[i];
             m_detailProtoTypes[i].prototypeTexture = detailTexture[i];
             m_detailProtoTypes[i].renderMode = detailMode;
             m_detailProtoTypes[i].healthyColor = m_grassHealthyColor;
             m_detailProtoTypes[i].dryColor = m_grassDryColor;
             m_detailProtoTypes[i].maxHeight = 0.5f;
             m_detailProtoTypes[i].maxWidth = 0.2f;
-            //protoDetail[i].usePrototypeMesh = true;
         }
         for (int i = 0; i < numOfTreePrototypes; i++)
         {
@@ -140,7 +137,7 @@ public class InfiniteTerrain : InfiniteLandscape
                 m_terrainGrid[i, j].detailObjectDensity = m_detailObjectDensity;
                 m_terrainGrid[i, j].detailObjectDistance = m_detailObjectDistance;
 
-                m_terrainGrid[i, j].collider.enabled = false;
+                m_terrainGrid[i, j].GetComponent<Collider>().enabled = false;
                 m_terrainGrid[i, j].basemapDistance = 4000;
                 m_terrainGrid[i, j].castShadows = false;
 
@@ -159,8 +156,8 @@ public class InfiniteTerrain : InfiniteLandscape
         StartCoroutine(FlushTerrain());
         terrainIsFlushed = true;
 
-        m_terrainGrid[curCyclicIndexX, curCyclicIndexZ].collider.enabled = false;
-        m_terrainGrid[curCyclicIndexX, curCyclicIndexZ].collider.enabled = true;
+        m_terrainGrid[curCyclicIndexX, curCyclicIndexZ].GetComponent<Collider>().enabled = false;
+        m_terrainGrid[curCyclicIndexX, curCyclicIndexZ].GetComponent<Collider>().enabled = true;
     }
 
     void UpdateTerrainNeighbors()
@@ -317,8 +314,8 @@ public class InfiniteTerrain : InfiniteLandscape
         base.Update();
         if (updateLandscape == true)
         {
-            m_terrainGrid[curCyclicIndexX, curCyclicIndexZ].collider.enabled = true;        //Slow operation
-            m_terrainGrid[prevCyclicIndexX, prevCyclicIndexZ].collider.enabled = false;
+            m_terrainGrid[curCyclicIndexX, curCyclicIndexZ].GetComponent<Collider>().enabled = true;        //Slow operation
+            m_terrainGrid[prevCyclicIndexX, prevCyclicIndexZ].GetComponent<Collider>().enabled = false;
 
             UpdateTerrainNeighbors();
             UpdateTerrainPositions();

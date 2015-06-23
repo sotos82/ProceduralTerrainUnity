@@ -32,12 +32,6 @@ public class SplatDetailPatch : IPatch  //To save some calls I have merged the s
 
     void FillSplatDetailPatch()
     {
-        /*float mult = 0;
-        Climate.Climates mainClimate = Climate.Climates.Arctic;
-        Climate.Climates secondaryClimate = Climate.Climates.Arctic;
-        Climate.GetClimate(globalTileX, globalTileZ, ref mult, ref mainClimate, ref secondaryClimate);
-        int i = 0;*/
-
         float heightThres = 700;
         float sandHeight = 80;
         float ratio = (float)InfiniteLandscape.m_landScapeSize / (float)InfiniteTerrain.m_heightMapSize;
@@ -78,13 +72,6 @@ public class SplatDetailPatch : IPatch  //To save some calls I have merged the s
                         }
                     }
                     /******************************************/
-                    //SplatMaps
-
-                    /*float noiseSplat = Mathf.Abs(m_detailNoise.FractalNoise2D(worldPosX, worldPosZ, 2, 1000, 0.4f));
-                    InfiniteTerrain.m_alphaMap[z, x, 0] = 1 - 5 * noiseSplat;
-                    InfiniteTerrain.m_alphaMap[z, x, 1] = 5 * noiseSplat;
-                    InfiniteTerrain.m_alphaMap[z, x, 2] = 0;
-                    InfiniteTerrain.m_alphaMap[z, x, 3] = 0;*/
 
                     float c = Mathf.Clamp01(Mathf.Pow(height / sandHeight, 3));
 
