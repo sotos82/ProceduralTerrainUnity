@@ -8,8 +8,8 @@ public class NoiseModule
 
     public NoiseModule(int seed)
     {
-        UnityEngine.Random.seed = seed;
-
+        Random.InitState(seed);
+        
         int i, j, k;
         for (i = 0; i < B; i++)
         {
@@ -19,7 +19,7 @@ public class NoiseModule
         while (--i != 0)
         {
             k = m_perm[i];
-            j = UnityEngine.Random.Range(0, B);
+            j = Random.Range(0, B);
             m_perm[i] = m_perm[j];
             m_perm[j] = k;
         }

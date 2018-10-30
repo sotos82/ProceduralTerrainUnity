@@ -17,12 +17,10 @@ public class InfiniteLandscape : MonoBehaviour
     protected int prevGlobalIndexZ = -1;
     protected int curGlobalIndexX = initialGlobalIndex + 1;
     protected int curGlobalIndexZ = initialGlobalIndex + 1;
-
     protected int prevLocalIndexX = -1;
     protected int prevLocalIndexZ = -1;
     protected int curLocalIndexX = 1;
     protected int curLocalIndexZ = 1;
-
     protected int prevCyclicIndexX = -1;
     protected int prevCyclicIndexZ = -1;
     protected int curCyclicIndexX = 1;
@@ -70,7 +68,7 @@ public class InfiniteLandscape : MonoBehaviour
 
     }
 
-    protected void Update()
+    protected virtual void Update()
     {
         if (UpdateIndexes())
             updateLandscape = true;

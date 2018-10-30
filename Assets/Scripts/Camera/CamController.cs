@@ -24,7 +24,6 @@ public class CamController : MonoBehaviour
 	private float yDeg = 0.0f;
 
 	private bool isZooming = false;
-	private bool isRotating = false;
 	private bool isPaning = false;
 
 	private Vector3 desiredPosition;
@@ -92,7 +91,6 @@ public class CamController : MonoBehaviour
 
 			if (Input.GetMouseButton(1) == false)
 			{
-				isRotating = false;
 				isZooming = false;
 				isPaning = false;
 
@@ -108,7 +106,6 @@ public class CamController : MonoBehaviour
 
 		if (Input.GetMouseButton(1))
 		{
-			isRotating = true;
 			isZooming = false;
 			isPaning = false;
 
@@ -129,12 +126,10 @@ public class CamController : MonoBehaviour
 		{
 			isPaning = true;
 			isZooming = false;
-			isRotating = false;
 		}
 		else if ( wheel != 0 )
 		{
 			isZooming = true;
-			isRotating = false;
 			isPaning = false;
 			isLocked = false;
 
@@ -201,8 +196,7 @@ public class CamController : MonoBehaviour
 		isLocked = true;
 		isZooming = false;
 		isPaning = false;
-		isRotating = false;
-
+	
 		lockedTransform = transformToLock;
 		
 		targetRotation.position = lockedTransform.position;
