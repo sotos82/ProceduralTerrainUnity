@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "Hidden/Nature/Tree Creator Bark Rendertex" {
 Properties {
 	_MainTex ("Base (RGB) Alpha (A)", 2D) = "white" {}
@@ -30,7 +32,7 @@ float4 _TerrainTreeLightColors[4];
 
 v2f vert (appdata_full v) {
 	v2f o;
-	o.pos = mul (UNITY_MATRIX_MVP, v.vertex);
+	o.pos = UnityObjectToClipPos (v.vertex);
 	o.uv = v.texcoord.xy;
 	float3 viewDir = normalize(ObjSpaceViewDir(v.vertex));
 	
@@ -111,7 +113,7 @@ SubShader {
 
 		v2f vert (appdata_full v) {
 			v2f o;
-			o.pos = mul (UNITY_MATRIX_MVP, v.vertex);
+			o.pos = UnityObjectToClipPos (v.vertex);
 			o.uv = v.texcoord.xy;
 
 			float3 light = UNITY_LIGHTMODEL_AMBIENT.rgb;

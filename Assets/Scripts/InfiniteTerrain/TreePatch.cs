@@ -4,7 +4,7 @@ using System.Collections;
 public class TreePatch : IPatch
 {
     private Terrain terrain;
-    private int globalTileX, globalTileZ, h0, h1;
+    private int h1;
     private TreeInstance[] tr;
 
     private NoiseModule m_treeNoise = new RidgedNoise(1);
@@ -12,10 +12,7 @@ public class TreePatch : IPatch
     public TreePatch(int globTileX_i, int globTileZ_i, Terrain terrain_i, int h0_i, int h1_i)
     {
         terrain = terrain_i;
-        h0 = h0_i;
         h1 = h1_i;
-        globalTileX = globTileX_i;
-        globalTileZ = globTileZ_i;
     }
     
     public void ExecutePatch()

@@ -309,7 +309,7 @@ public class InfiniteTerrain : InfiniteLandscape
             }
     }
 
-    void Update()
+    protected override void Update()
     {
         base.Update();
         if (updateLandscape == true)

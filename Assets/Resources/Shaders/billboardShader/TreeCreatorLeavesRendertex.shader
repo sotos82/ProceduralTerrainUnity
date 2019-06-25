@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "Hidden/Nature/Tree Creator Leaves Rendertex" {
 Properties {
 	_TranslucencyColor ("Translucency Color", Color) = (0.73,0.85,0.41,1) // (187,219,106,255)
@@ -36,7 +38,7 @@ float4 _TerrainTreeLightColors[4];
 v2f vert (appdata_full v) {	
 	v2f o;
 	ExpandBillboard (UNITY_MATRIX_IT_MV, v.vertex, v.normal, v.tangent);
-	o.pos = mul (UNITY_MATRIX_MVP, v.vertex);
+	o.pos = UnityObjectToClipPos (v.vertex);
 	o.uv = v.texcoord.xy;
 	float3 viewDir = normalize(ObjSpaceViewDir(v.vertex));
 	
@@ -129,7 +131,7 @@ SubShader {
 
 		v2f vert (appdata_full v) {
 			v2f o;
-			o.pos = mul (UNITY_MATRIX_MVP, v.vertex);
+			o.pos = UnityObjectToClipPos (v.vertex);
 			o.uv = v.texcoord.xy;
 
 			float3 light = UNITY_LIGHTMODEL_AMBIENT.rgb;
